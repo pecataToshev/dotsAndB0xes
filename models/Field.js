@@ -13,6 +13,17 @@ class Field{
         this.play2=play2;
         
         this.lines=[];
+        
+        this.walls=[];
+        
+        this.lastOutput=null;
+        
+        for(var i=0;i<this.height;i++){
+            this.walls[i]=[];
+            for(var j=0;j<this.width;j++){
+                this.walls[i][j]=0;
+            }
+        }
     }
     
     addLine(p1X,p1Y,p2X,p2Y){
@@ -22,6 +33,22 @@ class Field{
         
         if(added.length()!==1){
             return false;
+        }
+        
+        if(p1X==p2X){
+            ++this.walls[p1Y];
+            ++this.walls[p1Y+2];
+            if(this.walls[p1Y]==4 || this.walls[p1Y+2]==4){
+                return true;
+            }
+        }
+        
+        if(p1Y==p2Y){
+            ++this.walls[P1X];
+            ++this.walls[p1X+2];
+            if(this.walls[p1X]==4 || this.walls[p1X+2]==4){
+                return true;
+            }
         }
         
         this.lines.push(added);
@@ -47,8 +74,10 @@ class Field{
     }
     
     recallPlay(){
-        this.play1();
-        this.play2();
+        this.lastOutput=this.play1(this.lastOutput);
+        
+        this.lastOutput=this.play2(this.lastOutput);
+        
         setTimeout(recallPlay,1000);
     }
     
