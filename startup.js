@@ -13,14 +13,18 @@ var canvas=engine.getCanvas();
 var mouse=mouse(canvas);
 var checkPressed=CheckPressedProvider();
 
-var draw = function(){
-    context.clearRect(0,0,canvas.width,canvas.height)
-    context.fillRect(mouse.x,mouse.y,100,100)
-    context.strokeRect(0,0,canvas.width,canvas.height)
-}
+
+var f1=new Field(100,100,10,10);
 
 var update = function(){
-    console.log("Its working")
+}
+
+var draw = function(){
+    context.clearRect(0,0,canvas.width,canvas.height)
+    
+    f1.draw();
+    
+    context.strokeRect(0,0,canvas.width,canvas.height)
 }
 
 engine.setDraw(draw);

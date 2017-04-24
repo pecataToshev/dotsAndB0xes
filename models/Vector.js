@@ -12,8 +12,9 @@ class Vector{
     
     set x(value){
         if(typeof(value)!=="number"){
-            this._x=x;
+            throw new Error("Value should be number")
         }
+        this._x=value;
     }
     
     get y(){
@@ -22,7 +23,13 @@ class Vector{
     
     set y(value){
         if(typeof(value)!=="number"){
-            this._y=y;
+            throw new Error("Value should be number")
         }
+        this._y=value;
+    }
+    
+    distTo(p2){
+        console.log(Math.sqrt((this.x-p2.x)*(this.x-p2.x) + (this.y-p2.y)*(this.y-p2.y)))
+        return Math.sqrt((this.x-p2.x)*(this.x-p2.x) + (this.y-p2.y)*(this.y-p2.y));
     }
 }
