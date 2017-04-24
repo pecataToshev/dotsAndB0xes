@@ -76,7 +76,21 @@ class Field{
     recallPlay(){
         this.lastOutput=this.play1(this.lastOutput);
         
+        for(var i=0;i<this.lastOutput.length/4;i++){
+            this.addLine(this.lastOutput[i],
+                        this.lastOutput[i+1],
+                        this.lastOutput[i+2],
+                        this.lastOutput[i+3])
+        }
+        
         this.lastOutput=this.play2(this.lastOutput);
+        
+        for(var i=0;i<this.lastOutput.length/4;i++){
+            this.addLine(this.lastOutput[i],
+                        this.lastOutput[i+1],
+                        this.lastOutput[i+2],
+                        this.lastOutput[i+3])
+        }
         
         setTimeout(recallPlay,1000);
     }
