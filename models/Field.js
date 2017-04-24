@@ -44,7 +44,7 @@ class Field{
         }
         
         if(p1Y==p2Y){
-            ++this.walls[P1X];
+            ++this.walls[p1X];
             ++this.walls[p1X+2];
             if(this.walls[p1X]==4 || this.walls[p1X+2]==4){
                 return true;
